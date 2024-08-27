@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Items</title>
+    <style>
+
+  body {
+    background-image: url("https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3M5My1hay0yNDkzXzEuanBn.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%; /* Zoom in by scaling the image */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Keep the image fixed while scrolling */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+  
+     
+      
+      body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            color: rgba(243, 38, 7, 0.537);
+            
+          
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            color:yellow;
+            padding: 40px;
+            height: 500px;
+        }
+        .menu, .cart {
+            width: 45%;
+            font-size: xx-large;
+            
+            border: 1px solid black;
+            border-radius: 2rem;
+            padding: 20px;
+        }
+        .menu-item, .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .cart-item {
+            border-bottom: 1px solid #50d568;
+            padding-bottom: 5px;
+        }
+        .menu-item button, .cart-item button {
+            background-color: #007bff;
+            color: rgb(217, 155, 155);
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .menu-item button:hover, .cart-item button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+   <header>
+        <h1>Big Think Menu</h1>
+        <nav>
+            <ul>
+                <li class="active"><a href="index.html">Home<span class="underline"></span></a></li>
+                  <li><a data-scroll="reservation"  href="Reservation.jsp" class="active">Reservations</a></li>
+                 <li> <a data-scroll="Menu"  href="menu.jsp" class="active">Menu</a></li>
+                  <li> <a data-scroll="Features"  href="#Features" class="active">Features</a></li>
+                  <li><a data-scroll="shop"  href="cart.html" class="active">Shop</a></li>
+                 <li> <a data-scroll="Contact"  href="#contact" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Add Items</h1>
+    <div class="container">
+        <div class="menu">
+            <h2>Menu</h2>
+            <div class="menu-item">
+                <span>Spring Rolls - 150</span>
+                <button onclick="addToCart('Spring Rolls', 150)">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <span>Pizza - 200</span>
+                <button onclick="addToCart('Pizza', 200)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <span>Burger - 80</span>
+                <button onclick="addToCart('Burger', 80)">Add to Cart</button>
+            </div>
+           
+            <div class="menu-item">
+                <span>Clod Coffee - 80</span>
+                <button onclick="addToCart('Clod Coffee', 80)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <span>Pasta - 120</span>
+                <button onclick="addToCart('pasta', 120)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <span>Donut - 150</span>
+                <button onclick="addToCart('Donut', 150)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <span>Sandwich - 90</span>
+                <button onclick="addToCart('Sandwich', 90)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="cart">
+            <h2>Cart</h2>
+            <div id="cart-items"></div>
+            <div>
+                <strong>Total: Rs<span id="total-price">0</span></strong>
+            </div>
+        </div>
+    </div>
+
+   <script>
+    let cart = [];
+    let totalPrice = 0;
+
+    function addToCart(item, price) {
+        cart.push({ item, price });
+        totalPrice += price;
+        updateCart();
+    }
+
+    function removeFromCart(index) {
+        totalPrice -= cart[index].price;
+        cart.splice(index, 1);
+        updateCart();
+    }
+
+    function formatPrice(price) {
+        // Format the price with commas and INR symbol
+        return '₹' + price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function updateCart() {
+        const cartItems = document.getElementById('cart-items');
+        cartItems.innerHTML = '';
+        cart.forEach((cartItem, index) => {
+            cartItems.innerHTML += `
+                <div class="cart-item">
+                    <span>${cartItem.item} - ${formatPrice(cartItem.price)}</span>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                </div>
+            `;
+        });
+        document.getElementById('total-price').innerText = formatPrice(totalPrice);
+    }
+</script>
+   
+</body>
+</html>

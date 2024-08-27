@@ -1,0 +1,71 @@
+/* Ensure the body takes up the full height of the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Apply the background image to the entire body */
+body {
+    background-image: url('https://images2.alphacoders.com/101/thumb-1920-1019901.jpg'); /* Replace with the path to your background image */
+    background-size: cover; /* Ensures the image covers the whole background */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+/* Styling for the container to ensure it's centered and readable */
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background for the form */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    max-width: 600px; /* Limits the width of the form */
+    margin: 50px auto; /* Centers the container horizontally and adds top and bottom margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for better separation from the background */
+}
+
+/* Styling for headings */
+h1 {
+    text-align: center; /* Centers the heading */
+    color: #333; /* Dark gray color for the text */
+}
+
+/* Basic styling for form elements */
+form {
+    display: flex;
+    flex-direction: column; /* Aligns form elements vertically */
+}
+
+/* Styling for labels and inputs */
+label {
+    margin-bottom: 5px; /* Adds space below the label */
+    font-weight: bold; /* Makes labels bold */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="phone"],
+input[type="date"],
+input[type="time"],
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 5px; /* Rounded corners for inputs */
+    margin-bottom: 15px; /* Space between inputs */
+    font-size: 16px; /* Larger font size for readability */
+}
+
+/* Styling for the submit button */
+input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text color */
+    font-size: 16px;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition effect */
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
